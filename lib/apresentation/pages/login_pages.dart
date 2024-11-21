@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trouve_moi_mobile/apresentation/pages/cadastro_pessoa.dart';
 import 'package:trouve_moi_mobile/apresentation/standart/app_colors.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -119,7 +120,14 @@ class _LoginPageState extends State<LoginScreen> {
                     const SizedBox(height: 10),
                     Center(
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CadastroPessoa(),
+                            ),
+                          );
+                        },
                         child: const Text.rich(
                           TextSpan(
                             text: 'Not a member? ',
