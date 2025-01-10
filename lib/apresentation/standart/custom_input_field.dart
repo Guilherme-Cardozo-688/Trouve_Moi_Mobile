@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // Necessário para TextInputFormatter
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trouve_moi_mobile/apresentation/standart/app_colors.dart';
 
@@ -7,6 +8,8 @@ class CustomInputField extends StatefulWidget {
   final IconData icon;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
+  final bool isPassword;
 
   const CustomInputField({
     Key? key,
@@ -14,6 +17,8 @@ class CustomInputField extends StatefulWidget {
     required this.icon,
     required this.controller,
     this.validator,
+    this.inputFormatters,
+    this.isPassword = false,
   }) : super(key: key);
 
   @override
@@ -21,7 +26,13 @@ class CustomInputField extends StatefulWidget {
 }
 
 class _CustomInputFieldState extends State<CustomInputField> {
-  late final FormFieldState<String>? _formFieldState;
+  late bool _isObscured;
+
+  @override
+  void initState() {
+    super.initState();
+    _isObscured = widget.isPassword; // Inicializa com o estado fornecido
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +48,21 @@ class _CustomInputFieldState extends State<CustomInputField> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(
-            widget.icon,
-            color: Colors.black,
-            size: 24,
+          GestureDetector(
+            onTap: widget.isPassword
+                ? () {
+                    setState(() {
+                      _isObscured = !_isObscured;
+                    });
+                  }
+                : null,
+            child: Icon(
+              widget.isPassword
+                  ? (_isObscured ? Icons.visibility_off : Icons.visibility)
+                  : widget.icon,
+              color: Colors.black,
+              size: 24,
+            ),
           ),
           SizedBox(width: MediaQuery.of(context).size.width * 0.02),
           Expanded(
@@ -52,6 +74,8 @@ class _CustomInputFieldState extends State<CustomInputField> {
                   form.validate();
                 }
               },
+              inputFormatters: widget.inputFormatters,
+              obscureText: widget.isPassword ? _isObscured : false,
               decoration: InputDecoration(
                 hintText: widget.labelText,
                 hintStyle: TextStyle(
