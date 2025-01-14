@@ -42,6 +42,31 @@ class _CadastroSenhaState extends State<CadastroSenha> {
           children: [
             Padding(
               padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height / 1.4,
+                left: MediaQuery.of(context).size.width / 5,
+              ),
+              child: SvgPicture.asset(
+                'assets/images/QUADRADO-ALEATORIO.svg',
+                height: MediaQuery.of(context).size.height / 3,
+                fit: BoxFit.fill,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: 0,
+                right: MediaQuery.of(context).size.width / 5,
+              ),
+              child: Transform.rotate(
+                angle: 90 * (3.141592653589793 / 180),
+                child: SvgPicture.asset(
+                  'assets/images/QUADRADO-ALEATORIO.svg',
+                  height: MediaQuery.of(context).size.height / 3,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
                 top: MediaQuery.of(context).size.height / 4.5,
               ),
               child: Center(
@@ -64,7 +89,6 @@ class _CadastroSenhaState extends State<CadastroSenha> {
                 ),
               ),
             ),
-            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Form(
