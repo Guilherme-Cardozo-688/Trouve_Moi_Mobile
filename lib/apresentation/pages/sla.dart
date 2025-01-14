@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trouve_moi_mobile/apresentation/standart/app_bar_costume.dart';
+
+import 'mapa_page.dart';
 
 class PageViewWithBottomNavBar extends StatefulWidget {
   @override
@@ -14,53 +17,61 @@ class _PageViewWithBottomNavBarState extends State<PageViewWithBottomNavBar> {
     setState(() {
       _selectedIndex = index;
     });
-    _pageController.jumpToPage(index); // Muda de página no PageView
+    _pageController.jumpToPage(index);
   }
 
   @override
   Widget build(BuildContext context) {
+    final double icon = MediaQuery.of(context).size.height * 0.035;
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (int index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
+      appBar: AppBarCostume(),
+      body: Stack(
         children: [
-          // Tela 1
-          Container(
-            color: Colors.blue,
-            child: Center(
-              child: Text(
-                'Tela 1',
-                style: TextStyle(fontSize: 32, color: Colors.white),
+          PageView(
+            controller: _pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            onPageChanged: (int index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            children: [
+              // Tela 1
+              Container(
+                color: Colors.blue,
+                child: Center(
+                  child: UserLocationMap(),
+                ),
               ),
-            ),
-          ),
-          // Tela 2
-          Container(
-            color: Colors.green,
-            child: Center(
-              child: Text(
-                'Tela 2',
-                style: TextStyle(fontSize: 32, color: Colors.white),
+              // Tela 2
+              Container(
+                color: Colors.green,
+                child: const Center(
+                  child: Text(
+                    'Tela 2',
+                    style: TextStyle(fontSize: 32, color: Colors.white),
+                  ),
+                ),
               ),
-            ),
-          ),
-          // Tela 3
-          Container(
-            color: Colors.red,
-            child: Center(
-              child: Text(
-                'Tela 3',
-                style: TextStyle(fontSize: 32, color: Colors.white),
+              // Tela 3
+              Container(
+                color: Colors.red,
+                child: const Center(
+                  child: Text(
+                    'Tela 3',
+                    style: TextStyle(
+                      fontSize: 32,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        iconSize: icon,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: const [

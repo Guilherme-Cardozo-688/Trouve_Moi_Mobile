@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:trouve_moi_mobile/apresentation/standart/custom_input_field.dart';
 
 class CadastroSenha extends StatefulWidget {
@@ -38,16 +40,27 @@ class _CadastroSenhaState extends State<CadastroSenha> {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Positioned(
-              top: MediaQuery.of(context).size.height / 6,
-              left: MediaQuery.of(context).size.width / 40,
-              right: MediaQuery.of(context).size.width / 40,
-              child: Container(
-                height: MediaQuery.of(context).size.height / 1.65,
-                width: MediaQuery.of(context).size.height / 2.3,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: const Color.fromRGBO(85, 105, 94, 1),
+            Padding(
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height / 4.5,
+              ),
+              child: Center(
+                child: SvgPicture.asset(
+                  'assets/images/CADASTRO-SENHA-CONTAINER.svg',
+                  height: MediaQuery.of(context).size.height / 2,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height / 1.14,
+              ),
+              child: Center(
+                child: SvgPicture.asset(
+                  'assets/images/BACK-BUTTON.svg',
+                  height: MediaQuery.of(context).size.height / 6,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -122,44 +135,55 @@ class _CadastroSenhaState extends State<CadastroSenha> {
                         );
                       },
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_userNameController.text.isEmpty) {
-                          _errorNotifier.value =
-                              'Por favor, insira seu nome de usuário.';
-                        } else if (_senhaController.text.isEmpty) {
-                          _errorNotifier.value = 'Por favor, insira sua senha.';
-                        } else if (_confirmaSenhaController.text.isEmpty) {
-                          _errorNotifier.value =
-                              'Por favor, confirme sua senha.';
-                        } else if (_senhaController.text !=
-                            _confirmaSenhaController.text) {
-                          _errorNotifier.value =
-                              'As senhas precisam ser idênticas.';
-                        } else {
-                          _errorNotifier.value = null;
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Cadastro realizado com sucesso!'),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.11),
+                    Align(
+                      alignment: Alignment.center,
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          minWidth: 200,
+                          minHeight: 70,
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (_userNameController.text.isEmpty) {
+                              _errorNotifier.value =
+                                  'Por favor, insira seu nome de usuário.';
+                            } else if (_senhaController.text.isEmpty) {
+                              _errorNotifier.value =
+                                  'Por favor, insira sua senha.';
+                            } else if (_confirmaSenhaController.text.isEmpty) {
+                              _errorNotifier.value =
+                                  'Por favor, confirme sua senha.';
+                            } else if (_senhaController.text !=
+                                _confirmaSenhaController.text) {
+                              _errorNotifier.value =
+                                  'As senhas precisam ser idênticas.';
+                            } else {
+                              _errorNotifier.value = null;
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content:
+                                      Text('Cadastro realizado com sucesso!'),
+                                ),
+                              );
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromRGBO(85, 105, 94, 1),
+                            padding: EdgeInsets.zero,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
                             ),
-                          );
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromRGBO(85, 105, 94, 1),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 15,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                      child: const Text(
-                        'Next',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
+                          ),
+                          child: Text(
+                            'Register',
+                            style: GoogleFonts.tinos(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
                     ),

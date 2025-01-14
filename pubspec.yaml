@@ -34,6 +34,8 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_osm_plugin: ^1.3.6
   mask_text_input_formatter: ^2.9.0
+  permission_handler: ^11.3.1
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +64,8 @@ flutter:
     - assets/images/LOGO.jpeg
     - assets/images/LOGIN.png
     - assets/images/CADASTRO.png
+    - assets/images/CADASTRO-SENHA-CONTAINER.svg
+    - assets/images/BACK-BUTTON.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

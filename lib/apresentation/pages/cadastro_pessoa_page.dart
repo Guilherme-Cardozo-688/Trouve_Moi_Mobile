@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:trouve_moi_mobile/apresentation/pages/cadastro_senha_page.dart';
 import 'package:trouve_moi_mobile/apresentation/standart/Input_mask_formatters%20.dart';
 import 'package:trouve_moi_mobile/apresentation/standart/custom_input_field.dart';
@@ -28,11 +30,23 @@ class CadastroPessoa extends StatelessWidget {
               left: MediaQuery.of(context).size.width / 40,
               right: MediaQuery.of(context).size.width / 40,
               child: Container(
-                height: MediaQuery.of(context).size.height / 1.65,
+                height: MediaQuery.of(context).size.height / 1.6,
                 width: MediaQuery.of(context).size.height / 2.3,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: const Color.fromRGBO(85, 105, 94, 1),
+                  borderRadius: BorderRadius.circular(40),
+                  color: const Color(0xFF607A6B),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height / 1.5,
+              ),
+              child: Center(
+                child: SvgPicture.asset(
+                  'assets/images/BACK-BUTTON.svg',
+                  height: MediaQuery.of(context).size.height / 7,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -113,64 +127,74 @@ class CadastroPessoa extends StatelessWidget {
                         );
                       },
                     ),
-                    SizedBox(height: 120),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_nomeController.text.isEmpty) {
-                          _errorNotifier.value =
-                              'Por favor, insira seu nome completo.';
-                        } else if (_dataNascimentoController.text.isEmpty) {
-                          _errorNotifier.value =
-                              'Por favor, insira sua data de nascimento.';
-                        } else if (_emailController.text.isEmpty) {
-                          _errorNotifier.value = 'Por favor, insira seu email.';
-                        } else if (!RegExp(
-                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                            .hasMatch(_emailController.text)) {
-                          _errorNotifier.value =
-                              'Por favor, insira um email válido.';
-                        } else if (_telefoneController.text.isEmpty) {
-                          _errorNotifier.value =
-                              'Por favor, insira seu telefone.';
-                        } else if (_cpfController.text.isEmpty ||
-                            _cpfController.text.length != 14) {
-                          _errorNotifier.value =
-                              'Por favor, insira um CPF válido com 11 dígitos.';
-                        } else if (_enderecoController.text.isEmpty) {
-                          _errorNotifier.value =
-                              'Por favor, insira seu endereço.';
-                        } else {
-                          _errorNotifier.value = null;
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CadastroSenha(
-                                nomeController: _nomeController,
-                                dataNascimentoController:
-                                    _dataNascimentoController,
-                                emailController: _emailController,
-                                telefoneController: _telefoneController,
-                                cpfController: _cpfController,
-                                enderecoController: _enderecoController,
-                              ),
+                    SizedBox(height: 80),
+                    Align(
+                      alignment: Alignment.center,
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          minWidth: 200,
+                          minHeight: 70,
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (_nomeController.text.isEmpty) {
+                              _errorNotifier.value =
+                                  'Por favor, insira seu nome completo.';
+                            } else if (_dataNascimentoController.text.isEmpty) {
+                              _errorNotifier.value =
+                                  'Por favor, insira sua data de nascimento.';
+                            } else if (_emailController.text.isEmpty) {
+                              _errorNotifier.value =
+                                  'Por favor, insira seu email.';
+                            } else if (!RegExp(
+                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                .hasMatch(_emailController.text)) {
+                              _errorNotifier.value =
+                                  'Por favor, insira um email válido.';
+                            } else if (_telefoneController.text.isEmpty) {
+                              _errorNotifier.value =
+                                  'Por favor, insira seu telefone.';
+                            } else if (_cpfController.text.isEmpty ||
+                                _cpfController.text.length != 14) {
+                              _errorNotifier.value =
+                                  'Por favor, insira um CPF válido com 11 dígitos.';
+                            } else if (_enderecoController.text.isEmpty) {
+                              _errorNotifier.value =
+                                  'Por favor, insira seu endereço.';
+                            } else {
+                              _errorNotifier.value = null;
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CadastroSenha(
+                                    nomeController: _nomeController,
+                                    dataNascimentoController:
+                                        _dataNascimentoController,
+                                    emailController: _emailController,
+                                    telefoneController: _telefoneController,
+                                    cpfController: _cpfController,
+                                    enderecoController: _enderecoController,
+                                  ),
+                                ),
+                              );
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromRGBO(85, 105, 94, 1),
+                            padding: EdgeInsets.zero,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
                             ),
-                          );
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromRGBO(85, 105, 94, 1),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 15,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                      child: const Text(
-                        'Next',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
+                          ),
+                          child: Text(
+                            'Next',
+                            style: GoogleFonts.tinos(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
                     ),
