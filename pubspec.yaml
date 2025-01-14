@@ -66,6 +66,8 @@ flutter:
     - assets/images/CADASTRO.png
     - assets/images/CADASTRO-SENHA-CONTAINER.svg
     - assets/images/BACK-BUTTON.svg
+    - assets/images/QUADRADO-ALEATORIO.svg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

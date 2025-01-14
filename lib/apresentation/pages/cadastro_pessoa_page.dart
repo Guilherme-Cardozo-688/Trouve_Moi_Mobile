@@ -25,6 +25,31 @@ class CadastroPessoa extends StatelessWidget {
       body: SingleChildScrollView(
         child: Stack(
           children: [
+            Padding(
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height / 1.4,
+                left: MediaQuery.of(context).size.width / 5,
+              ),
+              child: SvgPicture.asset(
+                'assets/images/QUADRADO-ALEATORIO.svg',
+                height: MediaQuery.of(context).size.height / 3,
+                fit: BoxFit.fill,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: 0,
+                right: MediaQuery.of(context).size.width / 5,
+              ),
+              child: Transform.rotate(
+                angle: 90 * (3.141592653589793 / 180),
+                child: SvgPicture.asset(
+                  'assets/images/QUADRADO-ALEATORIO.svg',
+                  height: MediaQuery.of(context).size.height / 3,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
             Positioned(
               top: MediaQuery.of(context).size.height / 6,
               left: MediaQuery.of(context).size.width / 40,
