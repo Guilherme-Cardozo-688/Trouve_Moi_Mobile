@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class UserLocationMap extends StatefulWidget {
+class UserMapPage extends StatefulWidget {
+  const UserMapPage({
+    super.key,
+  });
+
   @override
-  _UserLocationMapState createState() => _UserLocationMapState();
+  _UserMapPageState createState() => _UserMapPageState();
 }
 
-class _UserLocationMapState extends State<UserLocationMap> {
+class _UserMapPageState extends State<UserMapPage> {
   late MapController _mapController;
 
   @override

@@ -3,7 +3,7 @@ import 'package:trouve_moi_mobile/apresentation/pages/cadastro_pessoa_page.dart'
 import 'package:trouve_moi_mobile/apresentation/pages/home_page.dart';
 import 'package:trouve_moi_mobile/apresentation/pages/login_page.dart';
 
-import 'apresentation/pages/sla.dart';
+import 'apresentation/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: CadastroPessoa(),
+      home: HomePage(),
     );
   }
 }

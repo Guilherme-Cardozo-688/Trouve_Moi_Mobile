@@ -12,14 +12,14 @@ class CustomInputField extends StatefulWidget {
   final bool isPassword;
 
   const CustomInputField({
-    Key? key,
+    super.key,
     required this.labelText,
     required this.icon,
     required this.controller,
     this.validator,
     this.inputFormatters,
     this.isPassword = false,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomInputField> createState() => _CustomInputFieldState();
